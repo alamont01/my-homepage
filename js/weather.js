@@ -106,31 +106,24 @@ class WeatherWidget {
         const current = data.current_weather;
         const daily = data.daily;
         
+        // Update the weather header with location and icon
+        const weatherHeader = document.querySelector('.weather-header h3');
+        weatherHeader.innerHTML = `${locationName} ${this.getWeatherIcon(current.weathercode)}`;
+        
         const html = `
-            <div class="current-weather">
-                <div class="location">${locationName}</div>
-                <div class="weather-icon">${this.getWeatherIcon(current.weathercode)}</div>
-                <div class="temperature">${Math.round(current.temperature)}°C</div>
-                <div class="weather-details">
-                    <div class="weather-item">
-                        <div>Wind Speed</div>
-                        <div>${current.windspeed} km/h</div>
-                    </div>
-                    <div class="weather-item">
-                        <div>Wind Direction</div>
-                        <div>${current.winddirection}°</div>
-                    </div>
+            <div class="weather-content-wrapper">
+                <div class="current-weather">
+                    <div class="temperature">${Math.round(current.temperature)}°C</div>
                 </div>
-            </div>
-            <div class="forecast">
-                <h4>3-Day Forecast</h4>
-                ${daily.time.slice(0, 3).map((date, index) => `
-                    <div class="forecast-item">
-                        <span>${new Date(date).toLocaleDateString('en-US', { weekday: 'short' })}</span>
-                        <span>${this.getWeatherIcon(daily.weathercode[index])}</span>
-                        <span>${Math.round(daily.temperature_2m_min[index])}° / ${Math.round(daily.temperature_2m_max[index])}°</span>
-                    </div>
-                `).join('')}
+                <div class="forecast">
+                    ${daily.time.slice(0, 3).map((date, index) => `
+                        <div class="forecast-item">
+                            <div class="forecast-day">${new Date(date).toLocaleDateString('en-US', { weekday: 'short' })}</div>
+                            <div class="forecast-icon">${this.getWeatherIcon(daily.weathercode[index])}</div>
+                            <div class="forecast-temp">${Math.round(daily.temperature_2m_min[index])}° / ${Math.round(daily.temperature_2m_max[index])}°</div>
+                        </div>
+                    `).join('')}
+                </div>
             </div>
         `;
 

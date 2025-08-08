@@ -108,7 +108,7 @@ h1 {
 
 /* Weather Widget Styles */
 .weather-container {
-    max-width: 400px;
+    max-width: 800px;
     margin: 20px auto;
     padding: 20px;
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -128,6 +128,9 @@ h1 {
 .weather-header h3 {
     margin: 0;
     font-size: 1.5em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .location-btn {
@@ -149,41 +152,52 @@ h1 {
     text-align: center;
 }
 
+.weather-content-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
 .current-weather {
-    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
 }
 
 .temperature {
-    font-size: 3em;
+    font-size: 3.5em;
     font-weight: bold;
-    margin: 10px 0;
-}
-
-.weather-details {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-top: 15px;
-}
-
-.weather-item {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 10px;
-    border-radius: 5px;
+    margin: 0;
+    min-width: 150px;
 }
 
 .forecast {
-    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+    align-items: stretch;
 }
 
 .forecast-item {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    padding: 8px;
-    margin: 5px 0;
+    padding: 15px;
     background: rgba(255, 255, 255, 0.1);
-    border-radius: 5px;
+    border-radius: 8px;
+    min-width: 100px;
+}
+
+.forecast-day {
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.forecast-icon {
+    font-size: 1.5em;
+    margin: 8px 0;
+}
+
+.forecast-temp {
+    font-size: 0.9em;
 }
 
 .loading {
