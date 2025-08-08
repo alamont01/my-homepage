@@ -12,12 +12,22 @@ async function getDadJoke() {
     }
 }
 
+function fireConfetti() {
+    confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 },
+        colors: ['#00b4db', '#0083b0', '#2d9f67', '#ffffff']
+    });
+}
+
 function updateJoke() {
     const jokeText = document.getElementById('joke-text');
     jokeText.textContent = 'Loading...';
     
     getDadJoke().then(joke => {
         jokeText.textContent = joke;
+        fireConfetti(); // Trigger confetti after the joke loads
     });
 }
 
